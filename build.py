@@ -1,8 +1,3 @@
-# templates/top.html + content/index.html + templates/bottom.html > docs/index.html
-# templates/top.html + content/about.html + templates/bottom.html > docs/about.html
-# templates/top.html + content/projects.html + templates/bottom.html > docs/projects.html
-# templates/top.html + content/blog.html + templates/bottom.html > docs/blog.html
-
 # template, top and bottom 
 top = open("templates/top.html").read()
 bottom = open("templates/bottom.html").read()
@@ -28,4 +23,4 @@ open('docs/projects.html', 'w+').write(projects_html)
 
 content = open('content/blog.html').read()
 blog_html = top + content + bottom
-open('docs/blog.html', 'w+').write(blog_html)
+open('docs/git ignoreblog.html', 'w+').write(blog_html)
