@@ -3,19 +3,45 @@ p {
 	font-family: 'PT Serif', serif;
 }
 
+p a {
+	color: #c06c84;
+}
+
 h1 {
-	font-family: 'Hind Madurai', sans-serif;
+	color: #6c567b;
+	font-family: 'Arvo', serif;
 }
 
-body {
-	color: #FFFFFF;
+.blog-entry .text h3 a {
+	color: #be8abf;
+	font-family: 'Arvo', serif;
 }
 
-#colorlib-aside #colorlib-main-menu ul li a {
-	font-family: 'Martel Sans', sans-serif;
+.blog-entry .text .meta-wrap .meta span {
+	color: #f67280;
+	font-family: 'Arvo', serif;
 }
 
-.colorlib-nav-toggle {
-	color: #FFFFFF;
+.author-info .desc h1 {
+	color: #6c567b;
+	font-family: 'Arvo', serif;
+} 
+
+.author-info .desc .subheading {
+	color: #6c567b;
+	font-family: 'Arvo', serif;
 }
 
+#colorlib-main .row .bread {
+    color: white;
+    font-family: 'Arvo', serif;
+}
+
+.form-control::placeholder {
+    color:  #f67280;
+    opacity: 1; }
+
+
+.bg-light {
+  background-color: #ffffff; 
+} 
