@@ -3,8 +3,6 @@
 # templates/top.html + content/projects.html + templates/bottom.html > docs/projects.html
 # templates/top.html + content/blog.html + templates/bottom.html > docs/blog.html
 
-# output: docs/index.html?
-
 # template, top and bottom 
 top = open("templates/top.html").read()
 bottom = open("templates/bottom.html").read()
