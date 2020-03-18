@@ -1,0 +1,47 @@
+p {
+	color: #f67280;
+	font-family: 'PT Serif', serif;
+}
+
+p a {
+	color: #c06c84;
+}
+
+h1 {
+	color: #6c567b;
+	font-family: 'Arvo', serif;
+}
+
+.blog-entry .text h3 a {
+	color: #be8abf;
+	font-family: 'Arvo', serif;
+}
+
+.blog-entry .text .meta-wrap .meta span {
+	color: #f67280;
+	font-family: 'Arvo', serif;
+}
+
+.author-info .desc h1 {
+	color: #6c567b;
+	font-family: 'Arvo', serif;
+} 
+
+.author-info .desc .subheading {
+	color: #6c567b;
+	font-family: 'Arvo', serif;
+}
+
+#colorlib-main .row .bread {
+    color: white;
+    font-family: 'Arvo', serif;
+}
+
+.form-control::placeholder {
+    color:  #f67280;
+    opacity: 1; }
+
+
+.bg-light {
+  background-color: #ffffff; 
+} 
