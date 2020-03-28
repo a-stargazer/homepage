@@ -55,7 +55,7 @@ def main():
 		title = page["title"]
 		content = open(file_name).read()
 		full_page = apply_template(content, title)
-		final_output = final_page_output(output, full_page)
+		final_output = produce_output(output, full_page)
 
 # replace {{content}} with actual page content to base.html
 def apply_template(content, title):
