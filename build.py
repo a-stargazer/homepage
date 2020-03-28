@@ -60,7 +60,7 @@ def main():
 # replace {{content}} with actual page content to base.html
 def apply_template(content, title):
 	template = open("./templates/base.html").read()
-	template_with_content = template.replace("{{contents}}", content)
+	template_with_content = template.replace("{{content}}", content)
 	full_page = template_with_content.replace("{{title}}", title)
 	return full_page
 
