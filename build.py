@@ -22,56 +22,29 @@ pages = [
 ]
 
 # # loop through list
-# def main():
-# 	for page in pages:
-# 		file_name = page["filename"]
-# 		page_output = page["output"]
-# 		page_title = page["title"]
-# 		page_content = open(file_name).read()
-# 		combined_page = apply_template(page_content, page_title)
-# 		final_output = final_page_output(page_output, combined_page)
-
-# # replace {{content}} with actual page content to base.html
-# def apply_template(page_content, page_title):
-# 	template = open("./templates/base.html").read()
-# 	finished_template_with_content = template.replace("{{contents}}", page_content)
-# 	combined_page = finished_template_with_content.replace("{{title}}", page_title)
-# 	return combined_page
-
-# # output in the correct directory (/docs)
-# def final_page_output(page_output, combined_page):
-# 	open(page_output, "w+").write(combined_page)
-
-# # invoking main
-# main()
-# print("building the site has succeeded")
-
-# -------------------------------------------------------
-
 def main():
 	for page in pages:
 		file_name = page["filename"]
-		output = page["output"]
-		title = page["title"]
-		content = open(file_name).read()
-		full_page = apply_template(content, title)
-		final_output = produce_output(output, full_page)
+		page_output = page["output"]
+		page_title = page["title"]
+		page_content = open(file_name).read()
+		combined_page = apply_template(page_content, page_title)
+		final_output = final_page_output(page_output, combined_page)
 
-# replace {{content}} with actual page content to base.html
-def apply_template(content, title):
+# # replace {{content}} with actual page content to base.html
+def apply_template(page_content, page_title):
 	template = open("./templates/base.html").read()
-	template_with_content = template.replace("{{content}}", content)
-	full_page = template_with_content.replace("{{title}}", title)
-	return full_page
+	finished_template_with_content = template.replace("{{content}}", page_content)
+	combined_page = finished_template_with_content.replace("{{title}}", page_title)
+	return combined_page
 
 # output in the correct directory (/docs)
-def produce_output(output, full_page):
-	open(output, "w+").write(full_page)
+def final_page_output(page_output, combined_page):
+	open(page_output, "w+").write(combined_page)
 
 # invoking main
-if __name__ == "__main__":
-	main()
-	print("building the site has succeeded")
+main()
+print("the site has been built")
 
 # --------------------------------------------------------------------------------
     
