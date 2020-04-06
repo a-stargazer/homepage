@@ -27,7 +27,25 @@
             <h1 id="colorlib-logo"><a href="./index.html"><span class="img" style="background-image: url(./images/AliceColor.jpg);"></span>Alice Yang</a></h1>
             <nav id="colorlib-main-menu" role="navigation">
 
+
 <!-- Navigation Sidebar Links -->
+
+<ul>
+  <li class="dropdown"><a href="{% url 'index.html' %}" >Home</a></li>
+  <li class="dropdown"><a href="{% url './about.html' %}">About</a></li>
+  <li class="dropdown"><a href="{% url './projects.html' %}">Projects</a></li>
+  <li class="dropdown"><a href="{% url './blog.html' %}">Blog</a></li>
+</ul>
+</nav>
+
+{% with url_name=request.resolver_match.url_name %}
+<li class="dropdown {% if url_name == 'index' %}active{% endif %}"
+   <a href="{% url 'index' %}" >Home </a>
+</li>
+<li>...</li>
+{% endwith %}
+
+<!--
                 <ul>
                     <li class="colorlib-active"><a href="index.html">Home</a></li>
                     <li><a href="./about.html">About</a></li>
@@ -35,6 +53,9 @@
                     <li><a href="./blog.html">Blog</a></li>
                 </ul>
             </nav>
+
+-->
+
 
 <!-- End Colorlib Aside -->
         </aside>

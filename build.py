@@ -1,25 +1,44 @@
-pages = [
-	{
-		"filename": "./content/index.html",
-		"output": "./docs/index.html",
-		"title": "Home",
-	},
-	{
-		"filename": "./content/about.html",
-		"output": "./docs/about.html",
-		"title": "About Me",
-	},
-	{
-		"filename": "./content/projects.html",
-		"output": "./docs/projects.html",
-		"title": "My Projects",
-	},
-    {
-		"filename": "./content/blog.html",
-		"output": "./docs/blog.html",
-		"title": "My Blog",
-	},
-]
+# glob
+
+import glob
+all_html_files = glob.glob("content/*.html")
+print(all_html_files)
+
+# output: ['content/index.html', 'content/projects.html', 'content/about.html', 'content/blog.html']
+
+# -------------------------------------------------
+
+# os
+
+import os
+
+file_path = "content/blog.html"
+file_name = os.path.basename(file_path)
+print(file_name)
+name_only, extension = os.path.splitext(file_name)
+print(name_only)
+
+# output: 
+# blog.html
+# blog
+
+
+# -------------------------------------------------
+
+# pages list
+
+pages = []
+pages.append({
+	"filename": "content/index.html",
+	"title": "Index",
+	"output": "docs/index.html",
+})
+print(pages)
+
+# output:
+# [{'filename': 'content/index.html', 'title': 'Index', 'output': 'docs/index.html'}]
+
+# -------------------------------------------------
 
 # loop through list
 def main():
