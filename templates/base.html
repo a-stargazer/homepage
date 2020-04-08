@@ -5,12 +5,14 @@
   <head>
     <title>{{title}}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+
+<!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
 
+<!-- css needed for page to run -->
    <link rel="stylesheet" href="css/animate.css">
    <link rel="stylesheet" href="css/owl.carousel.min.css">
    <link rel="stylesheet" href="css/style.css">
@@ -19,6 +21,7 @@
 
   </head>
   <body>
+
 
 <!-- Navigation Sidebar, Image -->
     <div id="colorlib-page">
@@ -38,12 +41,23 @@
 </ul>
 </nav>
 
+      {% set active_page = title %}
+      {% for page in pages %}
+
+      <li class="nav-item">
+        <a class="nav-link {% if page.title == active_page %}active{% endif %}" href="{{ page.file_name }}">{{ page.title }}</a>
+      </li>
+     {% endfor %}
+
+<!--
 {% with url_name=request.resolver_match.url_name %}
 <li class="dropdown {% if url_name == 'index' %}active{% endif %}"
    <a href="{% url 'index' %}" >Home </a>
 </li>
 <li>...</li>
 {% endwith %}
+
+-->
 
 <!--
                 <ul>
