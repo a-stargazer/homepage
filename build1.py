@@ -46,10 +46,10 @@ def create_pages(pages):
             file_name = full_page,
         )
 
-        open(str("docs/" + name_only + ".html", "w+").write(html_output)
+        open(str("docs/" + name_only + ".html"), "w+").write(html_output)
 
 
 # invoke main
 
-    main()
-    print("the site has been built")
+main()
+print("the site has been built")
