@@ -20,33 +20,36 @@ def find_pages():
 # return basename of file, ex) if "/content/index.html" --> output: "index.html")
         page_name = os.path.basename(page) 
         name_only, extension = os.path.splitext(page_name) 
-        full_page = str("docs/" + name_only + ".html")
-        full_page_file = str(name_only + ".html")
+        full_page = "docs/" + name_only + ".html"
+        full_page_file = name_only + ".html"
 
         pages.append({
-            "file_name": page,
+            "file_name": "content/" + full_page_file,
             "output": full_page,
-            "title": name_only,
+            "title": name_only, 
         })
 
     print("pages: ", pages)
+    return pages
 
 # create pages using base.html
 def create_pages(pages):
+    content_html = open(full_page_file).read()
+
     template_html = open("./templates/base.html").read()
     template = Template(template_html)
 
     # create pages with Jinja and generate docs()
 
-    for page in pages:
+    for page in pages: 
+
         html_output = template.render(
             title = page["title"],
-            content = open(page).read(),
+            content = content_html,
             page = pages,
-            file_name = full_page,
         )
 
-        open(str("docs/" + name_only + ".html"), "w+").write(html_output)
+        open("docs/" + name_only + ".html", "w+").write(html_output)
 
 
 # invoke main
