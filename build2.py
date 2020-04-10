@@ -27,6 +27,7 @@ def find_pages():
             "file_name": "content/" + full_page_file,
             "output": full_page,
             "title": name_only, 
+            "file_name": page_name, 
         })
 
     print("pages: ", pages)
@@ -41,8 +42,7 @@ def create_pages(pages):
     # create pages with Jinja and generate docs()
 
     for page in pages: 
-        file_name = name_only + ".html"
-        content_html = open("file_name").read()
+        content_html = open(page["file_name"]).read()
         
         html_output = template.render(
             title = page["title"],
@@ -50,7 +50,7 @@ def create_pages(pages):
             page = pages,
         )
 
-        open("docs/" + name_only + ".html", "w+").write(html_output)
+        open("docs/" + page["title"] + ".html", "w+").write(html_output)
 
 
 # invoke main
