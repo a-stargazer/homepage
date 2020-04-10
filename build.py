@@ -28,7 +28,7 @@ def find_pages():
             "file_name": full_page_file,
             "output": "docs/" + file_name,
             "input": page,
-            "title": name_only, 
+            "title": "home" if name_only == "index" else name_only, 
             "file_name": file_name, 
         })
 
