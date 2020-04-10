@@ -12,21 +12,22 @@ def main():
 # create pages list
 def find_pages():
     pages = []
-    all_html_pages = glob.glob("content/*.html") # find files in "content/" that end with ".html"
+    all_html_pages = glob.glob("content/*.html") 
 
 # create html pages from content files
     for page in all_html_pages:
 
 # return basename of file, ex) if "/content/index.html" --> output: "index.html")
         page_name = os.path.basename(page) 
-
-# splits path name into root + ext (ex.): root: file, ext: .html)
         name_only, extension = os.path.splitext(page_name) 
         full_page = str("docs/" + name_only + ".html")
         full_page_file = str(name_only + ".html")
 
-# adds full_page_file to the end of pages list
-        pages.append(full_page_file)
+        pages.append({
+            "file_name": page,
+            "output": full_page,
+            "title": name_only,
+        })
 
     print("pages: ", pages)
 
@@ -36,7 +37,6 @@ def create_pages(pages):
     template = Template(template_html)
 
     # create pages with Jinja and generate docs()
-    # replace {{title}} and {{content}}
 
     for page in pages:
         html_output = template.render(
