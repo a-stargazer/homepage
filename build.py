@@ -2,72 +2,58 @@ import glob
 import os
 from jinja2 import Template
 
+def main():
+
+    pages = find_pages()
+    create_pages(pages)
+
+    print("the site has been successfully built")    
+
+# create pages list
 def find_pages():
     pages = []
-    all_content_docs = glob.glob("content/*.html")
-    # create dictionary with input filepath, output filepath, and title
-    for doc in all_content_docs:
+    all_html_pages = glob.glob("content/*.html") 
 
-    # define output dir path and filename
-    	output_dir_path = "docs/"
-    	file_name = os.path.basename(doc)
+# create html pages from content files
+    for page in all_html_pages:
 
-    	# remove extension to use filename as page title
-        name_only, extension = os.path.splitext(file_name)
-        print("name: ", name_only, ", extension: ", extension)
+# return basename of file, ex) if "/content/index.html" --> output: "index.html")
+        file_name = os.path.basename(page) 
+        name_only, extension = os.path.splitext(file_name) 
+ 
+        full_page = "docs/" + name_only + ".html"
+        full_page_file = name_only + ".html"
 
-        page = {
-            "input": doc, # content/index.html
-            "output": output_dir_path + file_name, # docs/index.html
-            "file_name": file_name, # ex.) index.html
-            "title": "Home" if name_only == "index", 
+        pages.append({
+            "file_name": "content/" + full_page_file,
+            "output": full_page,
+            "input": page,
+            "title": name_only, 
+            "file_name": file_name, 
+        })
 
-            # or 
-			# full_page = str("docs/" + name_only + ".html")
-			# file_of_full_page = str(name_only + ".html")
-			# pages.append(file_of_full_page)
+    return pages
 
-        }
+# create pages using base.html
+def create_pages(pages):
 
-        pages.append(page)
+    template_html = open("./templates/base.html").read()
+    template = Template(template_html)
+
+    # create pages with Jinja and generate docs()
+
+    for page in pages: 
+        content_html = open(page["input"]).read()
+        
+        html_output = template.render(
+            title = page["title"],
+            content = content_html,
+            page = pages,
+        )
+
+        open("docs/" + page["title"] + ".html", "w+").write(html_output)
 
 
-# # pages list 
+# invoke main
 
-# pages = []
-# all_html_files = glob.glob("content/*.html")
-# print(all_html_files)
-
-# # main
-# def main():
-#     index_html = open("./content/index.html").read()
-#     template_html = open("./templates/base.html").read()
-#     template = Template(template_html)
-#     for page in all_html_files:
-#     	# generate docs()
-#     	content = open(page).read()
-
-# # generate html pages from files in "content/"
-#     page = "content/*.html"
-#     page_name = os.path.basename(page)
-    # name_only, extension = os.path.splitext(page_name)
-#     full_page = str("docs/" + name_only + ".html")
-#     file_of_full_page = str(name_only + ".html")
-
-#     pages.append(file_of_full_page)
-
-# # file name: file of full page
-# final_html = template.render(
-#         content = html,
-# 	    title = title,
-# 	    pages = pages,
-# 	    file_name = full_page,
-# )
-
-# open(str("docs/" + name_only + ".html"), "w+").write(final_html)
-
-# print(pages)
-
-# invoking main
 main()
-print("the site has been built")
