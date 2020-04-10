@@ -33,13 +33,13 @@
 
 <!-- Navigation Sidebar Links -->
 
+{% set active_page = title %}
 {% for page in pages %}
 
-<a href="{{ page.file_name }}">{{ page.title }}</a>
+<p class="nav-item">
+  <a class="nav-link js-scroll-trigger {% if page.title == active_page %}active{% endif %}" href="{{ page.file_name }}">{{ page.title }}</a>
 
 {% endfor %}
-
-</nav>
 
 
 <!-- End Colorlib Aside -->
