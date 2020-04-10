@@ -37,7 +37,7 @@
 {% for page in pages %}
 
 <p class="nav-item">
-  <a class="nav-link js-scroll-trigger {% if page.title == active_page %}active{% endif %}" href="{{ page.file_name }}">{{ page.title }}</a>
+  <a class="nav-link {% if page.title == active_page %}active{% endif %}" href="{{ page.file_name }}">{{ page.title }}</a>
 
 {% endfor %}
 
