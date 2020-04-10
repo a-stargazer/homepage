@@ -26,7 +26,7 @@ def find_pages():
 
         pages.append({
             "file_name": full_page_file,
-            "output": file_name,
+            "output": "docs/" + file_name,
             "input": page,
             "title": name_only, 
             "file_name": file_name, 
@@ -51,7 +51,7 @@ def create_pages(pages):
             pages = pages,
         )
 
-        open("docs/" + page["output"], "w+").write(html_output)
+        open(page["output"], "w+").write(html_output)
 
 
 # invoke main

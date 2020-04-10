@@ -33,15 +33,13 @@
 
 <!-- Navigation Sidebar Links -->
 
+{% for page in pages %}
+
+<a href="{{ page.file_name }}">{{ page.title }}</a>
+
+{% endfor %}
+
 </nav>
-
-      {% set active_page = title %}
-      {% for page in pages %}
-
-      <li class="nav-item">
-        <a class="nav-link {% if page.title == active_page %}active{% endif %}" href="{{ page.file_name }}">{{ page.title }}</a>
-      </li>
-     {% endfor %}
 
 
 <!-- End Colorlib Aside -->
