@@ -45,3 +45,25 @@ h1 {
 .bg-light {
   background-color: #ffffff; 
 } 
+
+.btn {
+	border: none;
+	outline: none;
+	padding: 10px 16px; 
+	cursor: pointer; 
+}
+
+#colorlib-page .nav-link {
+    -webkit-transition: none;
+    transition: none;
+    padding: orange;
+    color: #6c567b;
+  }
+#colorlib-page .nav-link:hover {
+    color: black;
+  }
+
+#colorlib-page .nav-link:active {
+    color: blue;
+    font-weight: bold;
+  }
