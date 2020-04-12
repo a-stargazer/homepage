@@ -1,23 +1,32 @@
 import utils 
 import sys
 
-# an array for command line arguments
-print("This is argv: ", sys.argv)
-command = sys.argv[1]
-print(command)
-
-if command == "build":
-	print("Build was specified")
-	# todo something here...
-elif command == "new":
-	print("New page was specified")
-	# todo something more here!
-else:
-	print("Please specify 'build' or 'new'")
-
 def main():
 
-    pages = find_pages()
-    create_pages(pages)
+    command = sys.argv[1]
 
-    print("the site has been successfully built")   
+    # build the site 
+    if command == "build":
+        pages = utils.find_pages()
+        utils.create_pages(pages)
+        print("Build was specified")
+
+    # create content/new_content_page.html 
+    elif command == "new":
+        utils.new_page()
+        print("New page was specified")
+
+    # prints out commands to either rebuild site or create new page
+    elif command == "help":
+        print("""
+    Example commands:
+            Rebuild site:    python manage.py build
+            Create new page: python manage.py new
+        """)
+
+    else:
+            print("Please specify 'build' or 'new'")
+
+# invoke main
+main()
+

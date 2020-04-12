@@ -44,3 +44,20 @@ def create_pages(pages):
         )
 
         open(page["output"], "w+").write(html_output)
+
+def new_page(filename="new_content_page.html"):
+
+    message = """
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <title>Page Title</title>
+            <meta charset="utf-8">
+          </head>
+          <body>
+            <h1>New Content!</h1>
+            <p>New content...</p>
+        </html>
+        """
+
+    open("content/" + filename, "w+").write(message)

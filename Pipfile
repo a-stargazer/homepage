@@ -9,6 +9,7 @@ verify_ssl = true
 glob = "*"
 os = "*"
 jinja2 = "*"
+sys = "*"
 
 [requires]
 python_version = "3.6"
