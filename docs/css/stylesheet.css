@@ -60,10 +60,10 @@ h1 {
     color: #6c567b;
   }
 #colorlib-page .nav-link:hover {
-    color: black;
+    color: #522d5b;
   }
 
-#colorlib-page .nav-link:active {
-    color: blue;
+#colorlib-page .nav-link.active {
+	color: #522d5b;
     font-weight: bold;
   }

@@ -2,14 +2,6 @@ import glob
 import os
 from jinja2 import Template
 
-def main():
-
-    pages = find_pages()
-    create_pages(pages)
-
-    print("the site has been successfully built")    
-
-# create pages list
 def find_pages():
     pages = []
     all_html_pages = glob.glob("content/*.html") 
@@ -18,18 +10,20 @@ def find_pages():
     for page in all_html_pages:
 
 # return basename of file, ex) if "/content/index.html" --> output: "index.html")
-        page_name = os.path.basename(page) 
-        name_only, extension = os.path.splitext(page_name) 
+        file_name = os.path.basename(page) 
+        name_only, extension = os.path.splitext(file_name) 
+ 
         full_page = "docs/" + name_only + ".html"
-        full_page_file = name_only + ".html"
+        full_page_file = "content/" + name_only + ".html"
 
         pages.append({
-            "file_name": "content/" + full_page_file,
-            "output": full_page,
-            "title": name_only, 
+            "file_name": full_page_file,
+            "output": "docs/" + file_name,
+            "input": page,
+            "title": "home" if name_only == "index" else name_only, 
+            "file_name": file_name, 
         })
 
-    print("pages: ", pages)
     return pages
 
 # create pages using base.html
@@ -41,19 +35,12 @@ def create_pages(pages):
     # create pages with Jinja and generate docs()
 
     for page in pages: 
-        file_name = name_only + ".html"
-        content_html = open("file_name").read()
+        content_html = open(page["input"]).read()
         
         html_output = template.render(
             title = page["title"],
             content = content_html,
-            page = pages,
+            pages = pages,
         )
 
-        open("docs/" + name_only + ".html", "w+").write(html_output)
-
-
-# invoke main
-
-main()
-print("the site has been built")
+        open(page["output"], "w+").write(html_output)
