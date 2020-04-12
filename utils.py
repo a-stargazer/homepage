@@ -32,8 +32,6 @@ def create_pages(pages):
     template_html = open("./templates/base.html").read()
     template = Template(template_html)
 
-    # create pages with Jinja and generate docs()
-
     for page in pages: 
         content_html = open(page["input"]).read()
         
@@ -45,6 +43,7 @@ def create_pages(pages):
 
         open(page["output"], "w+").write(html_output)
 
+# create a new page if "python3 manage.py new" is run
 def new_page(filename="new_content_page.html"):
 
     message = """
